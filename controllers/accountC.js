@@ -3,9 +3,16 @@ const bcrypt = require('bcrypt');
 
 // get log in pages
 exports.getLogin = (req,res,next) => {
+
+    // let errorMessage = req.session.errorMessage;
+    // delete req.session,errorMessage;
+
     res.render('account/login',{
         path:'/login',
         title:'Log In',
+        // csrfToken = req.csrfToken();
+        // isAuthentication = req.body.isAuthentication,
+        // errorMessage = errorMessage
 
     });
 }
@@ -38,6 +45,12 @@ exports.postLogin = (req,res,next) => {
         User.findOne({email:email})
             .then(user => {
                 if(!user){
+                    /*
+                        req.session.errorMessage = 'this mail not found!';
+                        req.session.save(function(err) => {
+                            console.log(err);
+                        });
+                    */
                     return redirect('/login');
                 }
                 bcrypt.compare(password,user.password)
@@ -59,10 +72,13 @@ exports.postLogin = (req,res,next) => {
 }
 //get register page
 exports.getRegister = (req,res,next) => {
+    // let errorMessage = req.session.errorMessage;
+    // delete req.session,errorMessage;
     res.render('account/register',{
         path:'/register',
         title:'Register',
-        isAuthenticated:req.session.isAuthenticated,
+        // isAuthenticated:req.session.isAuthenticated,
+        // errorMessage = errorMessage
     });
 }
 //post register page

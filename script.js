@@ -12,6 +12,7 @@ const User = require('./modules/user')
 const accountRout = require('./routes/account');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const csurf = require('csurf');
 
 
 
@@ -41,6 +42,8 @@ app.use((req,res,next) => {
             return next()
         })
 })
+
+app.use(csurf());
 
 app.use('/admin',adminRouter);
 app.use(userRouter);

@@ -49,7 +49,8 @@ exports.addProduct = (req, res, next) => {
                 title:'Add New Product',
                 categories:categories[],
                 path:'admin/add-product',
-                isAuthentication:res.session.isAuthentication
+                isAuthentication:res.session.isAuthentication,
+                csrfToken = req.body.csrfToken(),
             })
             })
             .catch(err => console.log(err))
