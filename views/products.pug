@@ -1,0 +1,27 @@
+extends layout/main_layout.pug
+
+mixin createProduct(pro)
+    .col-md-4
+        .card.my-3
+            img.card-images-top(src=`/images/${pro.image}` alt='')
+            .card-body
+                h4.card-title
+                    a(href='#') #{pro.name}
+                p.card-text.pt-2
+                    | #{pro.description}
+            .card-footer
+                small.text-muted
+                    i.fas.fa-lira-sign
+                    |                                     #{pro.price}
+                a.btn.btn-secondary.btn-sm.float-right(href='#')
+                    i.fa.fa-angle-double-right
+                    |                                     Details
+
+
+block content
+    .row
+        if products.length > 0
+            each pro in products
+                +createProduct(pro)
+        else 
+            h1 No Product Found

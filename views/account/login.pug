@@ -1,0 +1,16 @@
+extends ../layout/main_layout.pug
+block content
+    .col-lg-9
+        form(action='/login' method='POST')
+            .form-group.row
+                label.col-sm-2.col-form-label(for='email') Email
+                .col-sm-10
+                    input#productName.form-control(type='text' name='email')
+            .form-group.row
+                label.col-sm-2.col-form-label(for='productName') Password
+                .col-sm-10
+                    input#productName.form-control(type='password' name='password')
+            .form-group.row
+                .col-sm-10.offset-sm-2
+                    input.btn.btn-primary(type='submit' value='Submit')
+    

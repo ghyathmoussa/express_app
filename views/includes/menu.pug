@@ -1,0 +1,4 @@
+.list-group
+    if categories.length > 0
+        each cat in categories 
+            a(href=`/categories/${cat.id}` class=cat.id==selectedCat?'list-group-item active':'list-group-item') #{cat.name}

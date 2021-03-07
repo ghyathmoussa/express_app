@@ -1,0 +1,31 @@
+extends layout/main_layout.pug
+block content
+    .col-lg-9
+        form(action='/admin/add-product' method='POST')
+            .form-group.row
+                label.col-sm-2.col-form-label(for='productName') Name
+                .col-sm-10
+                    input#productName.form-control(type='text' name='productName')
+            .form-group.row
+                label.col-sm-2.col-form-label(for='productName') Price
+                .col-sm-10
+                    input#productName.form-control(type='text' name='productPrice')
+            .form-group.row
+                label.col-sm-2.col-form-label(for='productName') Image
+                .col-sm-10
+                    input#productName.form-control(type='text' name='productImage')
+            .form-group.row
+                label.col-sm-2.col-form-label(for='categoryid') Category
+                .col-sm-10
+                    select#categoryid.form-control(name='categoryid')
+                        option(value="-1") Select Category
+                        each cat in categories 
+                            option(value=`${cat.id}`) #{cat.name} 
+            .form-group.row
+                label.col-sm-2.col-form-label(for='productName') Description
+                .col-sm-10
+                    input#productName.form-control(type='text' name='productDes')
+            .form-group.row
+                .col-sm-10.offset-sm-2
+                    input.btn.btn-primary(type='submit' value='Save Product')
+    
